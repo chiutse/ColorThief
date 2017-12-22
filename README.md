@@ -3,7 +3,7 @@ A code for grabbing the color palette from an image. Uses C#.NET and Unity 2DTex
 
 Origin Project [Color Thief](https://github.com/lokesh/color-thief)
 
-Proting from [Color Thief .NET](https://github.com/KSemenenko/ColorThief) 
+Porting from [Color Thief .NET](https://github.com/KSemenenko/ColorThief) 
 
 ## How To Use
 Dominant Color
