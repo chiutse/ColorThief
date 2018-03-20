@@ -25,28 +25,7 @@ namespace ColorThief
         /// <summary>
         ///     Get or Set the Red component value for sRGB.
         /// </summary>
-        public byte R;
-
-        // public UnityEngine.Color ToColor32()
-        // {
-        //     int r = int.Parse(R.ToString());
-        //     int g = int.Parse(G.ToString());
-        //     int b = int.Parse(B.ToString());
-        //     int a = int.Parse(A.ToString());
-            
-        //     return new UnityEngine.Color32(r, g, b, a);
-        // }
-
-        public UnityEngine.Color ToColor()
-        {
-            UnityEngine.Color color = ToColor32();
-            return color;
-        }        
-
-        public UnityEngine.Color ToColor32()
-        {
-            return new UnityEngine.Color32(R, G, B, A);
-        }        
+        public byte R;    
 
         /// <summary>
         ///     Get HSL color.

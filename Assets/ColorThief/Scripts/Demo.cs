@@ -10,31 +10,44 @@ public class Demo : MonoBehaviour {
 	public Image dominantColor;
 	public Image[] paletteColors;
 
-	public string imagePath;
+	public InputField urlField;
 
 	// Use this for initialization
-	IEnumerator Start () {
-		WWW www = new WWW(imagePath);
-		yield return www;
-		if(string.IsNullOrEmpty(www.error))
-		{
-			texture = www.texture;
-			image.texture = texture;
-			image.SetNativeSize();
-			var dominant = new ColorThief.ColorThief();
-			dominantColor.color = dominant.GetColor(texture).Color.ToColor();
-			
-			var palette = new ColorThief.ColorThief();
-			List<ColorThief.QuantizedColor> colors = palette.GetPalette(texture, paletteColors.Length);
-			for(int i=0; i<colors.Count; i++)
-				paletteColors[i].color = colors[i].Color.ToColor(); 
-		}
-		else
-			Debug.Log(www.error);
+	void Start () {
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void Download()
+	{
+		StartCoroutine(DownloadImage());
+	}
+
+	IEnumerator DownloadImage()
+	{
+		WWW www = new WWW(urlField.text);
+		yield return www;
+		if(string.IsNullOrEmpty(www.error))
+		{
+			texture = www.texture;
+			image.texture = texture;
+			float ratio = 700f/texture.height;
+			float w = texture.width * ratio;
+			float h = texture.height * ratio;
+			image.rectTransform.sizeDelta = new Vector2(w, h);
+			var dominant = new ColorThief.ColorThief();
+			dominantColor.color = dominant.GetColor(texture).UnityColor;
+			
+			var palette = new ColorThief.ColorThief();
+			List<ColorThief.QuantizedColor> colors = palette.GetPalette(texture, paletteColors.Length);
+			for(int i=0; i<colors.Count; i++)
+				paletteColors[i].color = colors[i].UnityColor; 
+		}
+		else
+			Debug.Log(www.error);		
 	}
 }

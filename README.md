@@ -3,13 +3,13 @@ A code for grabbing the color palette from an image. Uses C#.NET and Unity 2DTex
 
 Origin Project [Color Thief](https://github.com/lokesh/color-thief)
 
-Porting from [Color Thief .NET](https://github.com/KSemenenko/ColorThief) 
+Ported Project of [Color Thief .NET](https://github.com/KSemenenko/ColorThief) 
 
 ## How To Use
 Dominant Color
 ```cs
 var dominant = new ColorThief.ColorThief();
-Color color = dominant.GetColor(texture).Color.ToColor();
+Color color = dominant.GetColor(texture).UnityColor;
 ```
 
 Palette Color
